@@ -81,6 +81,35 @@ class DataValidation:
             raise NetworkSecurityException(e, sys)
         
         
+        
+    def detect_dataset_drift(self,base_df,current_df,threshold=0.05)->bool:
+        try:
+            status=True
+            report={}
+            for column in base_df.columns:
+                d1=base_df[column]
+                d2=current_df[column]
+                is_same_dist=ks_2samp(d1,d2)
+                if threshold<=is_same_dist.pvalue:
+                    is_found=False
+                else:
+                    is_found=True
+                    status=False
+                report.update({column:{
+                    "p_value":float(is_same_dist.pvalue),
+                    "drift_status":is_found
+                    
+                    }})
+            drift_report_file_path = self.data_validation_config.drift_report_file_path
+
+            #Create directory
+            dir_path = os.path.dirname(drift_report_file_path)
+            os.makedirs(dir_path,exist_ok=True)
+            write_yaml_file(file_path=drift_report_file_path,content=report)
+            
+        except Exception as e:
+            raise NetworkSecurityException(e,sys)
+
     def initiate_data_validation(self)->DataValidationArtifact:
         try:
             train_file_path=self.data_ingestion_artifact.trained_file_path
