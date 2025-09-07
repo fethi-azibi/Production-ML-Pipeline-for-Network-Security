@@ -5,5 +5,9 @@ certifi
 pymongo[srv]
 pymongo
 pyaml
-
+mlflow==2.14.2
+pyaml
+dagshub
+fastapi
+uvicorn
 # -e .
