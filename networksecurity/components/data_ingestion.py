@@ -18,6 +18,9 @@ load_dotenv()
 # Get MongoDB URL from environment variables
 MONGO_DB_URL=os.getenv("MONGO_DB_URL")
 
+print("#####################################")
+print(MONGO_DB_URL)
+print("#####################################")
 
 class DataIngestion:
     def __init__(self,data_ingestion_config:DataIngestionConfig):
