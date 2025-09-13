@@ -29,7 +29,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
+readme_images/
 artifacts/*
 logs/*
 prediction_output/*
