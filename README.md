@@ -33,16 +33,23 @@ The **Network Security System** is an end-to-end machine learning project design
 The project is structured as a modular pipeline, with each component performing a specific task. Below is the architecture diagram and explanation for each step:
 
 ### **Pipeline Diagram**
-<img src="https://private-user-images.githubusercontent.com/101667256/489074060-4448ae4b-2ddc-4118-9baa-10f6262d9231.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTc3MjYzOTksIm5iZiI6MTc1NzcyNjA5OSwicGF0aCI6Ii8xMDE2NjcyNTYvNDg5MDc0MDYwLTQ0NDhhZTRiLTJkZGMtNDExOC05YmFhLTEwZjYyNjJkOTIzMS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwOTEzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDkxM1QwMTE0NTlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05N2QyODY4N2ZkNzMxMzZmNzljNTI3NzljZGZiMWQ5NThkM2RiOTVmNzhmNDI5ZThiYzUwYjg5MzM1MzQ2YTIxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.uQH6UCtwhRfrE3VW6ubZoN2AnlJqzOiyumpADSlhk4w" alt="Pipeline Diagram" >
+<img src="https://github.com/user-attachments/assets/3959ae75-adb4-46fa-b320-b9b6b62d06b6" alt="Pipeline Diagram" >
 
 ### **1. Data Ingestion**
-The **Data Ingestion** step is responsible for extracting data from various sources and preparing it for further processing.
+This module is responsible for fetching raw data from MongoDB, storing it in a feature store (CSV), and splitting it into training and testing datasets for downstream machine-learning tasks.
+
+<img src="https://github.com/user-attachments/assets/d79c30d7-bb95-4a86-8efc-a2472269fe76" alt="data ingestion schema">
 
 #### **Key Features**
-- **Data Sources**: Extracts data from MongoDB collections or CSV files.
-- **Conversion to DataFrame**: Converts the data into a Pandas DataFrame for easier manipulation.
-- **Handling Missing Values**: Replaces missing or invalid values with `NaN` for consistency.
+- **MongoDB → Pandas**: Reads data directly from a MongoDB collection and loads it into a Pandas DataFrame.
 
+- **Cleaning**: Drops the default MongoDB _id field and replaces any "na" strings with NaN.
+
+- **Feature Store**: Saves the cleaned dataset as a CSV file for reproducible experiments.
+
+- **Train/Test Split**: Splits the data into training and testing sets based on the configured ratio and stores them as separate CSV files.
+
+- **Config-Driven**: All file paths, database names, and split ratios are provided through the DataIngestionConfig class.
 #### **Implementation**
 - Connects to MongoDB using the `pymongo` library.
 - Drops unnecessary columns (e.g., `_id` from MongoDB).
@@ -52,6 +59,8 @@ The **Data Ingestion** step is responsible for extracting data from various sour
 
 ### **2. Data Validation**
 The **Data Validation** step ensures the integrity and quality of the data.
+
+<img alt="Image" src="https://github.com/user-attachments/assets/34728cdf-b5c1-4483-9a8f-0240e3bb13fb" />
 
 #### **Key Features**
 - **Schema Validation**: Validates the data against a predefined schema (`data_schema/schema.yaml`).
@@ -66,6 +75,8 @@ The **Data Validation** step ensures the integrity and quality of the data.
 
 ### **3. Data Transformation**
 The **Data Transformation** step prepares the data for machine learning by performing feature engineering and preprocessing.
+
+<img alt="Image" src="https://github.com/user-attachments/assets/681a0e7b-8537-4efa-96bd-c55d7ca56ff7" />
 
 #### **Key Features**
 - **Feature Engineering**: Creates new features or modifies existing ones to improve model performance.
