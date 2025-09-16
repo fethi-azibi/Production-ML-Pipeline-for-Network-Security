@@ -1,5 +1,6 @@
 import sys
 import os
+from dotenv import load_dotenv
 
 import certifi
 ca = certifi.where()
@@ -7,7 +8,6 @@ ca = certifi.where()
 from dotenv import load_dotenv
 load_dotenv()
 mongo_db_url = os.getenv("MONGODB_URL_KEY")
-print(mongo_db_url)
 import pymongo
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging

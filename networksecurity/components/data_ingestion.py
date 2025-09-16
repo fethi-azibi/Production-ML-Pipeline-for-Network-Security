@@ -5,22 +5,17 @@ import pandas as pd
 from typing import List
 import pymongo
 from sklearn.model_selection import train_test_split
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 ## configuration of the Data Ingestion Config
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.entity.config_entity import DataIngestionConfig
 from networksecurity.entity.artifact_entity import DataIngestionArtifact
 from networksecurity.logging.logger import logging
 
-# Load environment variables from .env file
-load_dotenv()
 
 # Get MongoDB URL from environment variables
 MONGO_DB_URL=os.getenv("MONGO_DB_URL")
 
-print("#####################################")
-print(MONGO_DB_URL)
-print("#####################################")
 
 class DataIngestion:
     def __init__(self,data_ingestion_config:DataIngestionConfig):

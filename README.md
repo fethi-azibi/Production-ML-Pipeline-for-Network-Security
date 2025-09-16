@@ -91,10 +91,12 @@ The **Data Transformation** step prepares the data for machine learning by perfo
 ### **4. Model Training**
 The **Model Training** step trains and evaluates machine learning models.
 
+<img alt="Image" src="https://github.com/user-attachments/assets/eb7ea76d-0ee4-4cc7-9950-9c3327859135" />
+
 #### **Key Features**
 - **Model Selection**: Trains multiple models (e.g., Decision Tree, Random Forest) and selects the best one based on evaluation metrics.
 - **Hyperparameter Tuning**: Optimizes model parameters using grid search.
-- **Experiment Tracking**: Logs metrics and parameters using **MLflow**.
+- **Experiment Tracking**: Logs metrics and parameters using **MLflow** and **Dagshub**.
 
 #### **Implementation**
 - Evaluates models using metrics like F1-score, precision, and recall.
@@ -104,7 +106,7 @@ The **Model Training** step trains and evaluates machine learning models.
 
 ### **5. Model Deployment**
 The **Model Deployment** step makes the trained model available for real-time inference.
-
+<img alt="Image" src="https://github.com/user-attachments/assets/642e1a62-8497-48ac-a928-c7a41a6e326c" />
 #### **Key Features**
 - **REST API**: Deploys the model as a REST API using **FastAPI**.
 - **Containerization**: Dockerizes the application for portability.
@@ -211,5 +213,7 @@ Once the application is running, you can test the REST API using tools like **Po
 For any questions or collaboration opportunities, feel free to reach out:
 
 Name: Fethi Azibi
+
+Email: azibi.fethi99@gmail.com
 
 [LinkedIn](https://www.linkedin.com/in/fethi-azibi/)
