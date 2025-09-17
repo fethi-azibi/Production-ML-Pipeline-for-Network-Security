@@ -31,9 +31,6 @@ from urllib.parse import urlparse
 
 import dagshub
 
-# os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/fethi_az/networksecurity.mlflow"
-# os.environ["MLFLOW_TRACKING_USERNAME"]="fethi_az"
-# os.environ["MLFLOW_TRACKING_PASSWORD"]="658c8252a6ca655ccec99b00079f00baa7b470ba"
 
 
 
